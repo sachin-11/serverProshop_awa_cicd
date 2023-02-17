@@ -27,10 +27,6 @@ app.use(cors());
 
 app.use("/products", productsRoutes);
 
-// //error handler middleware
-// app.use(notFound)
-// app.use(errorHandler)
-
 
 const PORT = process.env.PORT || 3000;
 
