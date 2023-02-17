@@ -4,7 +4,7 @@ const colors = require('colors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db')
-const productsRoutes = require('../backend/routes/productsRoute')
+const productsRoutes = require('./routes/productsRoute')
 
 //connect to congig
 
