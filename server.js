@@ -1,22 +1,41 @@
-const express = require('express')
-const cors = require('cors');
-const products = require('./data/products')
+import express from "express";
+import cors from "cors";
+import colors from "colors";
+import mongoose from "mongoose";
+import products from "./data/products.js";
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
+import {
+  errorHandler,
+  notFound,
+} from "../backend/middleware/errorMiddleware.js";
+import productRoutes from "../backend/routes/productsRoute.js";
 
-const app = express()
+//connect to congig
 
-app.use(cors())
+dotenv.config();
 
-app.get('/test', (req, res) => {
-  res.send('API is running')
-})
+//strict query
 
-app.get('/products', (req, res) => {
-  res.json(products)
-})
+mongoose.set("strictQuery", false);
 
-app.get('/products/:id', (req, res) => {
-  const product = products.find((p) => p._id === req.params.id)
-  res.json(product)
-})
+//connect to database
+connectDB();
 
-app.listen(3000, console.log('Server running on port 3000'))
+const app = express();
+app.use(cors());
+
+app.get("/", (req, res) => {
+  res.send("API is running");
+});
+
+app.use("/products", productRoutes);
+
+//error handler middleware
+app.use(notFound)
+app.use(errorHandler)
+
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, console.log(`Server running on port ${PORT}`));
