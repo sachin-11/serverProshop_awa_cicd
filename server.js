@@ -1,15 +1,10 @@
-import express from "express";
-import cors from "cors";
-import colors from "colors";
-import mongoose from "mongoose";
-import products from "./data/products.js";
-import dotenv from "dotenv";
-import connectDB from "./config/db.js";
-// import {
-//   errorHandler,
-//   notFound,
-// } from "../backend/middleware/errorMiddleware.js";
-import productRoutes from "../backend/routes/productsRoute.js";
+const express = require('express');
+const cors = require('cors');
+const colors = require('colors');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const connectDB = require('./config/db')
+const productsRoutes = require('../backend/routes/productsRoute')
 
 //connect to congig
 
@@ -30,7 +25,7 @@ app.get("/", (req, res) => {
 
 app.use(cors());
 
-app.use("/products", productRoutes);
+app.use("/products", productsRoutes);
 
 // //error handler middleware
 // app.use(notFound)

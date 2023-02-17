@@ -13,4 +13,7 @@ const notFound = (req, res, next) => {
     })
   }
   
-  export { notFound, errorHandler }
+ module.exports = {
+    notFound,
+    errorHandler,
+  }
