@@ -28,12 +28,13 @@ app.get("/", (req, res) => {
   res.send("API is running");
 });
 
+app.use(cors());
+
 app.use("/products", productRoutes);
 
 //error handler middleware
 app.use(notFound)
 app.use(errorHandler)
-app.use(cors());
 
 
 const PORT = process.env.PORT || 3000;
