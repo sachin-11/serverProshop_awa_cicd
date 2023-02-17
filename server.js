@@ -5,10 +5,10 @@ import mongoose from "mongoose";
 import products from "./data/products.js";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-import {
-  errorHandler,
-  notFound,
-} from "../backend/middleware/errorMiddleware.js";
+// import {
+//   errorHandler,
+//   notFound,
+// } from "../backend/middleware/errorMiddleware.js";
 import productRoutes from "../backend/routes/productsRoute.js";
 
 //connect to congig
@@ -32,9 +32,9 @@ app.use(cors());
 
 app.use("/products", productRoutes);
 
-//error handler middleware
-app.use(notFound)
-app.use(errorHandler)
+// //error handler middleware
+// app.use(notFound)
+// app.use(errorHandler)
 
 
 const PORT = process.env.PORT || 3000;
