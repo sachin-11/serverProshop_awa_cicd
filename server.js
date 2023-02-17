@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db')
 const productsRoutes = require('./routes/productsRoute')
+const userRoutes = require('./routes/userRoutes')
 
 //connect to congig
 
@@ -24,8 +25,10 @@ app.get("/", (req, res) => {
 });
 
 app.use(cors());
+app.use(express.json());
 
 app.use("/products", productsRoutes);
+app.use("/user", userRoutes);
 
 
 const PORT = process.env.PORT || 3000;
