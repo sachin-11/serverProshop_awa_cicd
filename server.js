@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db')
 const productsRoutes = require('./routes/productsRoute')
+const orderRoutes = require('./routes/orderRoutes.js')
 const userRoutes = require('./routes/userRoutes')
 
 //connect to congig
@@ -29,6 +30,7 @@ app.use(express.json());
 
 app.use("/products", productsRoutes);
 app.use("/user", userRoutes);
+app.use('/orders', orderRoutes)
 
 
 const PORT = process.env.PORT || 3000;
