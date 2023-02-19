@@ -32,6 +32,11 @@ app.use("/products", productsRoutes);
 app.use("/user", userRoutes);
 app.use('/orders', orderRoutes)
 
+app.get('/config/paypal', (req, res) =>
+  res.send(process.env.PAYPAL_CLIENT_ID)
+)
+
+
 
 const PORT = process.env.PORT || 3000;
 
