@@ -12,6 +12,7 @@ const {
 const { protect, admin } = require("../middleware/authMiddleware.js");
 
 router.route("/").get(getProducts);
+router.get('/top', getTopProducts)
 router
   .route("/:id")
   .get(getProductById)
@@ -19,6 +20,6 @@ router
   .put(protect, admin, updateProduct);
 router.route("/").get(getProducts).post(protect, admin, createProduct);
 router.route('/:id/reviews').post(protect, createProductReview)
-router.get('/top', getTopProducts)
+
 
 module.exports = router;
